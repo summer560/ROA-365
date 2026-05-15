@@ -1,13 +1,18 @@
-export type Product = { name: string; price: string; stock: string; category: string; description: string };
+export type Product = {
+  name: string;
+  price: string;
+  stock: string;
+  category: string;
+  description: string;
+  usageTip: string;
+  cautions: string[];
+  related: string[];
+};
 export type EventItem = { title: string; period: string; detail: string; note?: string };
 
-export const alertMessages = [
-  '현재 일온시 중앙권역 포탈 경보는 관심 단계입니다.',
-  'ROA 호출기 배터리팩 일부 품목 재고 부족',
-];
+export const alertMessages = ['현재 일온시 중앙권역 포탈 경보는 관심 단계입니다.', 'ROA 호출기 배터리팩 일부 품목 재고 부족'];
 
 export const quickMenus = ['행사 상품', '비상용품 재고', '세이프존 현황', 'ROA 제휴 서비스', '매장 이용 안내', '3개월 채용 공고'];
-
 export const quickMenuDetails: Record<string, string> = {
   '행사 상품': '당일/주간 행사 대상 상품, 시간대별 혜택, 묶음 프로모션을 확인할 수 있습니다.',
   '비상용품 재고': '마스크, 보온 담요, 정화수, 밀봉백의 재고와 입고 예정 일정을 안내합니다.',
@@ -17,21 +22,15 @@ export const quickMenuDetails: Record<string, string> = {
   '3개월 채용 공고': '세이프존 보조 스태프 기간제 채용 요건과 접수 방법을 확인할 수 있습니다.',
 };
 
-export const dashboard = [
-  ['영업 상태', '정상 운영'],
-  ['포탈 경보', '관심 (1단계)'],
-  ['세이프존 수용 가능 인원', '42명'],
-  ['비상 키트 재고', '충분'],
-  ['ROA 제휴 카운터', '운영 중'],
-];
+export const dashboard = [['영업 상태', '정상 운영'], ['포탈 경보', '관심 (1단계)'], ['세이프존 수용 가능 인원', '42명'], ['비상 키트 재고', '충분'], ['ROA 제휴 카운터', '운영 중']];
 
 export const products: Product[] = [
-  { name: '365 고열량 전투식 도시락', price: '₩6,900', stock: '충분', category: '도시락/간편식', description: '출동 전후 식사를 고려한 고열량 구성.' },
-  { name: '일온 야간근무 삼각김밥 세트', price: '₩4,500', stock: '보통', category: '도시락/간편식', description: '야간 교대 근무 고객 선호 조합.' },
-  { name: '포탈 대기열 에너지바', price: '₩2,200', stock: '충분', category: '음료/디저트', description: '장시간 대기를 고려한 탄수·단백 균형.' },
-  { name: '정화수 500ml', price: '₩1,400', stock: '충분', category: '생활용품', description: '비상 보관 적합 용기 규격.' },
-  { name: '외계 잔류물 클린티슈', price: '₩3,200', stock: '보통', category: '포탈 재난 대비용품', description: '초기 표면 오염 대응용.' },
-  { name: '비상 호출기 배터리팩', price: '₩12,000', stock: '부족', category: '레인저 제휴 상품', description: 'ROA 인증 단말 호환 배터리.' },
+  { name: '365 고열량 전투식 도시락', price: '₩6,900', stock: '충분', category: '도시락/간편식', description: '출동 전후 식사를 고려한 고열량 구성.', usageTip: '야간 순찰 전 30분 섭취 권장', cautions: ['개봉 후 즉시 섭취', '알레르기 원재료 확인 필요'], related: ['포탈 대기열 에너지바', '정화수 500ml'] },
+  { name: '일온 야간근무 삼각김밥 세트', price: '₩4,500', stock: '보통', category: '도시락/간편식', description: '야간 교대 근무 고객 선호 조합.', usageTip: '교대 인수인계 직전 간편식으로 적합', cautions: ['실온 장기 보관 금지'], related: ['ROA 인증 회복 젤', '정화수 500ml'] },
+  { name: '포탈 대기열 에너지바', price: '₩2,200', stock: '충분', category: '음료/디저트', description: '장시간 대기를 고려한 탄수·단백 균형.', usageTip: '대피 대기 중 빠른 열량 보충', cautions: ['수분과 함께 섭취 권장'], related: ['정화수 500ml', '365 고열량 전투식 도시락'] },
+  { name: '정화수 500ml', price: '₩1,400', stock: '충분', category: '생활용품', description: '비상 보관 적합 용기 규격.', usageTip: '개인 비상 파우치에 2병 이상 권장', cautions: ['직사광선 회피 보관'], related: ['단기 대피용 보온 담요', '포탈 대기열 에너지바'] },
+  { name: '외계 잔류물 클린티슈', price: '₩3,200', stock: '보통', category: '포탈 재난 대비용품', description: '초기 표면 오염 대응용.', usageTip: '오염 의심 부위 1차 닦음 처리', cautions: ['피부 이상 반응 시 사용 중단'], related: ['오염 의류 임시 밀봉백', '외계 독성 차단 마스크'] },
+  { name: '비상 호출기 배터리팩', price: '₩12,000', stock: '부족', category: '레인저 제휴 상품', description: 'ROA 인증 단말 호환 배터리.', usageTip: '출동 전 잔량 80% 미만 시 교체 권장', cautions: ['호환 기종 확인 필수'], related: ['호출기 충전 독 사용권', 'ROA 앱 인증 회복 젤'] },
 ];
 
 export const events: EventItem[] = [
@@ -57,13 +56,31 @@ export const faqs = [
   ['이상현상을 발견하면 어떻게 해야 하나요?', '직원에게 알리거나 이상현상 신고 QR을 이용해 접수해 주세요.'],
 ];
 
-export const safezoneFacilities = ['강화 방호 셔터', '간이 방호벽', '응급 키트', '외계 독성 차단 마스크', '정화수 보관함', '비상식량 보관함', '비상 호출기 충전 독', 'ROA 직통 신고 버튼', '이상현상 신고 태블릿'];
+export const safezoneOverview = [
+  ['현재 경보 단계', '관심 (1단계)'],
+  ['운영 상태', '일반 영업 + 세이프존 준비'],
+  ['수용 가능 인원', '42명'],
+  ['방호 설비 상태', '정상 · 점검 완료'],
+];
+
 export const safezoneSteps = [
-  '1단계(관심): 일반 영업 + 세이프존 준비 상태 유지',
-  '2단계(주의): 안내 방송 강화 + 대피 동선 사전 개방',
-  '3단계(경계): 동측 구역 세이프존 즉시 전환 + 출입 흐름 통제',
-  '4단계(심각): 방호 셔터 부분 하강 + ROA 직통 신고 상시 유지',
-  '5단계(위기): 방호 셔터 전면 가동 + 민간 출입 제한 + 구조 인력 우선 동선 적용',
+  { stage: '1단계(관심)', detail: '일반 영업 유지, 세이프존 설비 대기 상태 유지' },
+  { stage: '2단계(주의)', detail: '안내 방송 강화, 대피 동선 사전 개방 및 안내 인력 배치' },
+  { stage: '3단계(경계)', detail: '동측 구역 세이프존 전환, 일반 동선과 대피 동선 분리' },
+  { stage: '4단계(심각)', detail: '방호 셔터 부분 하강, ROA 직통 신고 상시 연결' },
+  { stage: '5단계(위기)', detail: '방호 셔터 전면 가동, 민간 출입 제한 및 구조 인력 우선 동선 적용' },
+];
+
+export const safezoneFacilities = [
+  { name: '강화 방호 셔터', detail: '외부 충격과 파편 유입을 차단하는 자동 방호 시스템.' },
+  { name: '간이 방호벽', detail: '내부 구획 분리를 통해 대피 동선을 안정화하는 이동형 차폐벽.' },
+  { name: '응급 키트', detail: '생활형 상처 처치 및 응급 안정화를 위한 기본 의료 세트.' },
+  { name: '외계 독성 차단 마스크', detail: '등급 1~2 생활형 공기 오염 대응 필터 마스크.' },
+  { name: '정화수 보관함', detail: '대피 인원을 고려한 정화수 비축 전용 보관 구역.' },
+  { name: '비상식량 보관함', detail: '장기 대기 상황 대비 고열량 비상식량 저장함.' },
+  { name: '비상 호출기 충전 독', detail: '호출기 및 단말기 긴급 충전 지원 스테이션.' },
+  { name: 'ROA 직통 신고 버튼', detail: '위험 등급 상승 시 ROA 대응팀에 즉시 연결되는 장치.' },
+  { name: '이상현상 신고 태블릿', detail: '이상 징후 발생 시 현장 보고를 디지털로 접수하는 단말.' },
 ];
 
 export const roaServices = ['ROA 앱 인증', '호출기 배터리 교환', '출동 전 픽업 예약', '임무 복귀자 간편식 패키지', '오염 의류 임시 밀봉백', '비상 보고 QR 접수', '세이프존 우선 대피 동선 안내'];
@@ -75,4 +92,19 @@ export const roaServiceDetails: Record<string, string> = {
   '오염 의류 임시 밀봉백': '접촉성 오염 의심 의류를 1차 밀봉해 이동 중 확산을 줄이는 보조 서비스입니다.',
   '비상 보고 QR 접수': '현장 이상 징후를 QR 양식으로 접수하면 매장 기록과 ROA 연계 시스템에 전달됩니다.',
   '세이프존 우선 대피 동선 안내': '경보 단계에 따라 레인저/시민 동선을 분리해 혼잡도를 줄이는 안내를 제공합니다.',
+};
+
+export const hiringData = {
+  intro: '365 STORE 일온시 지점은 본사 세이프존 인력 지원 프로그램에 따라 외인혼혈 지원자 대상 3개월 기간제 시범 고용 트랙을 운영합니다.',
+  summary: [
+    ['모집 분야', '외인혼혈 세이프존 보조 스태프'],
+    ['고용 형태', '3개월 기간제 시범 고용'],
+    ['근무 지점', '365 STORE 일온시 지점'],
+    ['채용 인원', '00명'],
+  ],
+  duties: ['세이프존 일일 점검 및 운영 기록 작성', '비상용품 입출고·유통기한 점검', '경보 단계 상향 시 대피 안내 보조', '야간 안전 순찰 및 이상 징후 1차 보고', 'ROA 제휴 카운터 보조 및 동선 관리'],
+  preferred: ['야간 근무 가능자 및 교대근무 경험자', '위기 상황 대응 훈련 수료자 우대', '현장 보고 문서 작성 역량 보유자', '외부 스트레스 환경에서의 안정적 커뮤니케이션 능력'],
+  conditions: ['근무 기간: 계약일로부터 3개월', '근무 형태: 주·야간 교대 스케줄', '급여: 사내 기간제 보상 기준 적용', '복지: 식사 지원 및 야간 교통비 일부 보조'],
+  process: ['서류 접수', '1차 실무 인터뷰', '현장 적응성 평가', '최종 합격 및 등록 절차'],
+  note: '당사는 차별 금지 원칙을 준수합니다. 다만 세이프존 운영 특성상 현장 적응성, 위험 대응 집중력, 교대 근무 수행 안정성을 주요 평가 항목으로 반영합니다.',
 };
