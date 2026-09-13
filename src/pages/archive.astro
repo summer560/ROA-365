@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+const topics=['장비','ROA 공식 앱','사건 기록','기관 자료','기타 세부 설정','OOC 명령어'];
+---
+<Base title="ARCHIVE — 기록 보관소" category="archive"><section class="coming-page page-width"><span class="eyebrow">06 / ROA WORLD ARCHIVE</span><h1>ARCHIVE<span class="coming-label">COMING SOON</span></h1><div class="coming-divider" aria-hidden="true"></div><h2>아직 펼쳐지지 않은 기록.</h2><p>기록 보관소를 준비하고 있습니다.</p><ul class="topic-tags">{topics.map(t=><li>{t}</li>)}</ul><a class="solid-button" href="/world/">세계관 둘러보기 <span aria-hidden="true">↗</span></a></section></Base>

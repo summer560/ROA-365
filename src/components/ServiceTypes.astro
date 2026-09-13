@@ -1,0 +1,13 @@
+---
+import systems from '../data/systems.json';
+---
+<section class="service-types" id="service-types" data-reveal>
+  <div class="section-heading"><div><span class="eyebrow">03 / SERVICE TYPES</span><h2>두 가지 복무 방식</h2></div></div>
+  <div class="service-grid">
+    {systems.serviceTypes.map((type,index) => <article>
+      <span class="eyebrow">{index === 0 ? 'REGULAR' : 'CONCURRENT'}</span>
+      <h3>{type.title}</h3>
+      {type.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </article>)}
+  </div>
+</section>
